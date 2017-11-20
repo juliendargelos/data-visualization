@@ -1,34 +1,13 @@
 Application.Model.Character = class Character extends Application.Model {
-  get gender() {
-    return this._gender;
-  }
-
-  set gender(v) {
-    this._gender = Application.Model.Gender.find(v);
-  }
-
-  get speciality() {
-    return this._speciality;
-  }
-
-  set speciality(v) {
-    this._speciality = Application.Model.Speciality.find(v);
-  }
-
-  get geographical_zone() {
-    return this._geographicalZone;
-  }
-
-  set geographical_zone(v) {
-    this._geographicalZone = Application.Model.GeographicalZone.find(v);
-  }
-
-  get zone_type() {
-    return this._zoneType;
-  }
-
-  set zone_type(v) {
-    this._zoneType = Application.Model.ZoneType.find(v);
+  static get includes() {
+    return [
+      Application.Mixin.Renderable.Templatable.with({
+        template: '#character',
+        elements: {
+          $arms: '.arm'
+        }
+      })
+    ];
   }
 
   static get attributes() {
@@ -59,5 +38,37 @@ Application.Model.Character = class Character extends Application.Model {
       screaming: 0,      // Capacité vocale                 (note entre 0 et 9)
       hairiness: 0       // Pilosité                        (note entre 0 et 9)
     });
+  }
+
+  get gender() {
+    return this._gender;
+  }
+
+  set gender(v) {
+    this._gender = Application.Model.Gender.find(v);
+  }
+
+  get speciality() {
+    return this._speciality;
+  }
+
+  set speciality(v) {
+    this._speciality = Application.Model.Speciality.find(v);
+  }
+
+  get geographical_zone() {
+    return this._geographicalZone;
+  }
+
+  set geographical_zone(v) {
+    this._geographicalZone = Application.Model.GeographicalZone.find(v);
+  }
+
+  get zone_type() {
+    return this._zoneType;
+  }
+
+  set zone_type(v) {
+    this._zoneType = Application.Model.ZoneType.find(v);
   }
 }

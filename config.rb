@@ -1,3 +1,7 @@
+ROOT = Pathname.new __dir__
+SOURCE = ROOT + 'source'
+IMAGES = SOURCE + 'images'
+
 # Activate and configure extensions
 # https://middlemanapp.com/advanced/configuration/#configuring-extensions
 
@@ -39,11 +43,11 @@ end
 # Methods defined in the helpers block are available in templates
 # https://middlemanapp.com/basics/helper-methods/
 
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
+helpers do
+  def svg *parts
+    File.read IMAGES + parts.join('/').sub(/\.svg\z/, '') + '.svg'
+  end
+end
 
 # Build-specific configuration
 # https://middlemanapp.com/advanced/configuration/#environment-specific-settings

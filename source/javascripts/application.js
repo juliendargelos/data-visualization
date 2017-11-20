@@ -2,6 +2,8 @@
 //= require_tree ./application
 
 class Application {
+  static get includes() { return [] }
+
   static get capitals() {
     if(!this._capitals) this._capitals = 'ABCDEFGHIJKLMNOPQRSTUVWXZ'.split('');
     return this._capitals;
@@ -24,6 +26,11 @@ class Application {
   static initialize() {
     this.components.forEach(component => {
       if(component.prototype instanceof this) component.initialize();
+    });
+
+    this.includes.forEach(mixin => {
+      if(Application.Mixin.mixable(mixin)) mixin.mix(this);
+      else throw "Include is not mixable:\n" + mixin;
     });
   }
 }
