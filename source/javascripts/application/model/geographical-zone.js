@@ -7,13 +7,6 @@ Application.Model.GeographicalZone = class GeographicalZone extends Application.
 
   static initialize() {
     super.initialize();
-
-    this.create(
-      {id: 'south', name: 'Sud'  },
-      {id: 'east',  name: 'Est'  },
-      {id: 'north', name: 'Nord' },
-      {id: 'west',  name: 'Ouest'},
-      {id: 'other', name: 'Autre'},
-    );
+    this.create(Application.Data.geographical_zones);
   }
 }

@@ -1,12 +1,8 @@
 Application.Model.Character = class Character extends Application.Model {
   static get includes() {
     return [
-      Application.Mixin.Renderable.Templatable.with({
-        template: '#character',
-        elements: {
-          $arms: '.arm'
-        }
-      })
+      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'leg', 'head']}),
+      Application.Mixin.Renderable.Templatable
     ];
   }
 
@@ -70,5 +66,10 @@ Application.Model.Character = class Character extends Application.Model {
 
   set zone_type(v) {
     this._zoneType = Application.Model.ZoneType.find(v);
+  }
+
+  static initialize() {
+    super.initialize();
+    this.create(Application.Data.characters);
   }
 }

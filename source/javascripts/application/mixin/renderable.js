@@ -7,37 +7,30 @@ Application.Mixin.Renderable = class Renderable extends Application.Mixin {
   get elements() {
     if(!this._elements) {
       this._elements = {};
-      for(var element in this.constructor.elements) Application.Mixin.Renderable.defineInstanceElement(this, element);
+      for(var element in this.constructor.elements) Application.Mixin.Renderable.defineElement(this, element);
     }
 
     return this._elements;
   }
 
-  get template() {
-    if(!this.constructor._template) {
-      var template = document.createElement('div');
-      template.innerHTML = document.querySelector('#character').innerHTML;
-      this.constructor._template = template.children[0];
-    }
-
-    return this.constructor._template;
-  }
-
   create() {
-    this._element = this.template.cloneNode(true);
+    this._element = document.createElement('div');
+    return this._element;
   }
 
-  static defineObjectElement(object, name, selector) {
-    if(name[0] === '$' ) object.elements[name.substring(1)] = instance => instance.element.querySelectorAll(selector);
-    else object.elements[name] = instance => instance.element.querySelector(selector);
-  }
-
-  static defineInstanceElement(object, name) {
-    Object.defineProperty(name, object._elements, {
-      get: function() {
-        return object.constructor.elements[name](this);
-      }
-    });
+  static defineElement(object, element) {
+    var selector = object.constructor.elements[element];
+    if(element[0] === '$' ) {
+      if(selector[0] === '$') selector = selector.substring(1);
+      Object.defineProperty(object.elements, element.substring(1), {
+        get: () => object.element.querySelectorAll(selector)
+      });
+    }
+    else {
+      Object.defineProperty(object.elements, element, {
+        get: () => object.element.querySelector(selector)
+      });
+    }
   }
 
   static mix(object, options) {
@@ -45,7 +38,12 @@ Application.Mixin.Renderable = class Renderable extends Application.Mixin {
 
     if(options.elements) {
       object.elements = {};
-      for(var element in options.elements) this.defineObjectElement(object, element, options.elements[element]);
+      if(Array.isArray(options.elements)) {
+        options.elements.forEach(element => { object.elements[element] = element });
+      }
+      else {
+        for(var element in options.elements) object.elements[element] = options.elements[element];
+      }
     }
 
     return options;

@@ -1,0 +1,14 @@
+- id: south
+  name: Sud
+
+- id: west
+  name: Ouest
+
+- id: north
+  name: Nord
+
+- id: east
+  name: Est
+
+- id: other
+  name: Autre

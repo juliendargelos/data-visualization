@@ -2,11 +2,19 @@
 //= require_tree ./application
 
 class Application {
+  static get mixed() {
+    if(!this._mixed) this._mixed = [];
+    return this._mixed;
+  }
   static get includes() { return [] }
 
   static get capitals() {
     if(!this._capitals) this._capitals = 'ABCDEFGHIJKLMNOPQRSTUVWXZ'.split('');
     return this._capitals;
+  }
+
+  static get parameterized() {
+    return this.name.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '');
   }
 
   static isValidComponent(component) {

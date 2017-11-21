@@ -7,10 +7,6 @@ Application.Model.ZoneType = class ZoneType extends Application.Model {
 
   static initialize() {
     super.initialize();
-
-    this.create(
-      {id: 'urban', name: 'urbain'},
-      {id: 'rural', name: 'Rural' }
-    );
+    this.create(Application.Data.zone_types);
   }
 }

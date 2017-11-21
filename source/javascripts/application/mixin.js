@@ -1,21 +1,26 @@
 Application.Mixin = class Mixin extends Application {
   static get descriptors() {
-    if(!this._descriptors) {
-      this._descriptors = Object.getOwnPropertyDescriptors(this.prototype);
-      delete this._descriptors.constructor;
-    }
+    var descriptors = Object.assign({}, Object.getOwnPropertyDescriptors(this.prototype));
+    delete descriptors.constructor;
 
-    return this._descriptors;
+    return descriptors;
   }
 
   static mix(object, options) {
     if(typeof options !== 'object' || options === null) options = {};
+    if(this.parent && !this.parent.mixed(object)) this.parent.mix(object, options);
 
     for(var property in this.descriptors) {
-      if(!Object.getOwnPropertyDescriptor(object.prototype, property)) Object.defineProperty(object.prototype, property, this.descriptors[property]);
+      Object.defineProperty(object.prototype, property, this.descriptors[property]);
     }
 
+    object.mixed.push(this);
+
     return options;
+  }
+
+  static mixed(object) {
+    return object.mixed.indexOf(this) !== -1;
   }
 
   static with(options) {
@@ -24,5 +29,10 @@ Application.Mixin = class Mixin extends Application {
 
   static mixable(mixin) {
     return mixin.prototype instanceof this || mixin instanceof Application.Mixin.Include;
+  }
+
+  static initialize() {
+    super.initialize();
+    this.components.forEach(component => { component.parent = this });
   }
 }

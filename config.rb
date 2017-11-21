@@ -1,5 +1,6 @@
 ROOT = Pathname.new __dir__
 SOURCE = ROOT + 'source'
+TEMPLATES = SOURCE + 'templates'
 IMAGES = SOURCE + 'images'
 
 # Activate and configure extensions
@@ -46,6 +47,28 @@ end
 helpers do
   def svg *parts
     File.read IMAGES + parts.join('/').sub(/\.svg\z/, '') + '.svg'
+  end
+
+  def template *parts, name: nil
+    path = ([:templates] + parts).join '/'
+    name = parts.join '-' if name.nil?
+
+    content_tag :script, partial(path).html_safe, name: name, type: 'text/template'
+  end
+
+  def templates
+    Dir[TEMPLATES + '**' + '*'].map do |t|
+      template File.basename(t).sub(/\A_/, '').gsub(/(?:\.[^\.]+)+\z/, '')
+    end.join.html_safe
+  end
+
+  def embed_data *parts, name: nil
+    name = parts.join '-' if name.nil?
+
+    content = data[parts.first]
+    content = content.dig *(parts[1..-1]) if parts.length > 1
+
+    content_tag :script, content.to_json.html_safe, name: name, type: 'text/json'
   end
 end
 

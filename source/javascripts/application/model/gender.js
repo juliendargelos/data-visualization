@@ -7,10 +7,6 @@ Application.Model.Gender = class Gender extends Application.Model {
 
   static initialize() {
     super.initialize();
-
-    this.create(
-      {id: 'male',   name: 'Homme'},
-      {id: 'female', name: 'Femme'}
-    );
+    this.create(Application.Data.genders);
   }
 }

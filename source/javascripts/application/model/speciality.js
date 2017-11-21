@@ -7,10 +7,6 @@ Application.Model.Speciality = class Speciality extends Application.Model {
 
   static initialize() {
     super.initialize();
-
-    this.create(
-      {id: 'developer', name: 'Développeur'},
-      {id: 'designer',  name: 'Designer'   }
-    );
+    this.create(Application.Data.specialities);
   }
 }
