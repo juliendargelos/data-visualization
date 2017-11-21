@@ -1,7 +1,7 @@
 Application.Model.Character = class Character extends Application.Model {
   static get includes() {
     return [
-      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'leg', 'head']}),
+      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'full-leg', 'head']}),
       Application.Mixin.Renderable.Templatable
     ];
   }
@@ -36,6 +36,18 @@ Application.Model.Character = class Character extends Application.Model {
     });
   }
 
+  static get renderers() {
+    if(!this._renderers) {
+      this._renderers = {
+        flexibility: character => {
+          character.elements.fullLeg.modifiers.set({rendered: character.flexibility});
+        }
+      };
+    }
+
+    return this._renderers;
+  }
+
   get gender() {
     return this._gender;
   }
@@ -66,6 +78,10 @@ Application.Model.Character = class Character extends Application.Model {
 
   set zone_type(v) {
     this._zoneType = Application.Model.ZoneType.find(v);
+  }
+
+  render() {
+    this.constructor.renderers.flexibility(this);
   }
 
   static initialize() {

@@ -63,13 +63,34 @@ Application.Bem.Selector = class Selector extends Application.Bem {
     }
   }
 
+  get length() {
+    return this.nodes.length;
+  }
+
   get modifiers() {
-    return new Application.Bem.Modifiers(this.nodes).block(this.block).element(this.element);
+    return new Application.Bem.Modifiers(this.nodes)
+      .block(this._block)
+      .element(this._element);
+  }
+
+  get className() {
+    return this.attr('class');
+  }
+
+  set className(v) {
+    this.attr('class', v);
+  }
+
+  get self() {
+    this._block = null;
+    this._element = null;
+
+    return this;
   }
 
   with(modifier, value) {
     if(typeof modifier === 'object' && modifier !== null) {
-      for(var m in modifier) this.modifier(m, modifier[m]);
+      for(var m in modifier) this.with(m, modifier[m]);
     }
     else {
       value = value ? (typeof value === 'string' ? value : true) : undefined;
@@ -82,6 +103,56 @@ Application.Bem.Selector = class Selector extends Application.Bem {
     }
 
     return this;
+  }
+
+  attr(attribute, value) {
+    if(arguments.length >= 2) {
+      this.nodes.forEach(node => node.setAttribute(attribute, value));
+      return this;
+    }
+    else if(typeof attribute === 'object' && attribute !== null) {
+      for(var attr in attribute) this.attr(attr, attribute[attr]);
+      return this;
+    }
+    else {
+      var node = this.node;
+      return node ? node.getAttribute(attribute) : null;
+    }
+  }
+
+  removeAttr(...attributes) {
+    this.nodes.forEach(node => {
+      attributes.forEach(attribute => node.removeAttribute(attribute));
+    });
+    return this;
+  }
+
+  remove() {
+    this.nodes.forEach(node => node.parentNode.removeChild(node));
+    return this;
+  }
+
+  css(property, value) {
+    if(arguments.length >= 2) {
+      this.nodes.forEach(node => {
+        node.style[property] = value;
+        node.setAttribute('style', node.style.cssText);
+      });
+      return this;
+    }
+    else if(typeof property === 'object' && property !== null) {
+      for(var p in property) this.css(p, property[p]);
+      return this;
+    }
+    else {
+      var node = this.node;
+
+      if(node) {
+        value = node.style[property];
+        return value ? value : window.getComputedStyle(node)[property];
+      }
+      else return null;
+    }
   }
 
   static block(block) {

@@ -15,16 +15,16 @@ Application.Bem = class Bem extends Application {
   block(block) {
     if(block !== this._block) {
       this._block = block;
-      this._basename = null
+      this._basename = null;
     }
 
     return this;
   }
 
   element(element) {
-    if(element !== this.element) {
+    if(element !== this._element) {
       this._element = element;
-      this._basename = null
+      this._basename = null;
     }
 
     return this;

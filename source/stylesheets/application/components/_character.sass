@@ -1,0 +1,16 @@
+.character
+  &__full-leg
+    transition: .4s
+
+    @for $n from 0 through 9
+      @at-root #{&}--left#{&}--rendered--#{$n}
+        transform: rotate(#{$n/9*90}deg)
+
+      @at-root #{&}--right#{&}--rendered--#{$n}
+        transform: rotate(#{-$n/9*90}deg)
+
+    &--left
+      transform-origin: 100px 475px
+
+    &--right
+      transform-origin: 157px 475px

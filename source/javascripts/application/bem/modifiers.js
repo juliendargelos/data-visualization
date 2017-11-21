@@ -9,7 +9,7 @@ Application.Bem.Modifiers = class Modifiers extends Application.Bem {
     var value = false;
 
     this.elements.some(element => {
-      var match = element.getAttribute('class').match(this.constructor.pattern(this.basename, modifier));
+      var match = (element.getAttribute('class') || '').match(this.constructor.pattern(this.basename, modifier));
       if(match !== null) value = match.length > 1 ? match[1] : true;
 
       return !!value;
@@ -19,11 +19,17 @@ Application.Bem.Modifiers = class Modifiers extends Application.Bem {
   }
 
   set(modifier, value) {
-    this.elements.forEach(element => {
-      var className = element.getAttribute('class').replace(this.constructor.pattern(this.basename, modifier), '');
-      element.setAttribute('class', className);
-      if(value) element.setAttribute('class', className + ' ' + this.constructor.className(this.basename, modifier, value));
-    })
+    if(typeof modifier === 'object' && modifier !== null) {
+      for(var m in modifier) this.set(m, modifier[m]);
+    }
+    else {
+      this.elements.forEach(element => {
+        var className = element.getAttribute('class');
+        className = className ? className.replace(this.constructor.pattern(this.basename, modifier), '') : '';
+        element.setAttribute('class', className);
+        if(value) element.setAttribute('class', className + ' ' + this.constructor.className(this.basename, modifier, value));
+      });
+    }
   }
 
   define(modifier, value) {
@@ -56,6 +62,6 @@ Application.Bem.Modifiers = class Modifiers extends Application.Bem {
   }
 
   static className(name, modifier, value) {
-    return name + '--' + modifier + (value && typeof value === 'string' ? '--' + value : '');
+    return name + '--' + modifier + (value && ['string', 'number'].includes(typeof value) ? '--' + value : '');
   }
 }

@@ -23,19 +23,33 @@ Application.Mixin.Renderable.Bemable = class Bemable extends Application.Mixin.R
   }
 
   create() {
-    var element = super.create();
-    this.modifiers.node(element);
-    return element;
+    this.modifiers.node(this._element);
+    return this._element;
   }
 
   static defineElement(object, element) {
+    var name = object.constructor.elements[element];
+
     if(element[0] === '$' ) element = element.substring(1);
     Object.defineProperty(object.elements, element, {
-      get: () => object.block.element(element)
+      get: () => object.block.element(name)
     });
   }
 
   static mix(object, options) {
+    if(typeof options === 'object' && object !== null && Array.isArray(options.elements) && options.transformElementNames !== false) {
+      var elements = {};
+      options.elements.forEach(element => {
+        var name = element.replace(/([A-Z])/g, '-$1').replace(/^-/, '').toLowerCase()
+        var key = name.split('-').map(k => k[0].toUpperCase() + k.substring(1)).join('');
+        key = key[0].toLowerCase() + key.substring(1);
+
+        elements[key] = name;
+      });
+
+      options.elements = elements;
+    }
+
     options = super.mix(object, options);
 
     object.block = options.block ? options.block : object.parameterized;

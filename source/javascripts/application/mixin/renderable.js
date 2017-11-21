@@ -18,6 +18,10 @@ Application.Mixin.Renderable = class Renderable extends Application.Mixin {
     return this._element;
   }
 
+  render() {
+
+  }
+
   static defineElement(object, element) {
     var selector = object.constructor.elements[element];
     if(element[0] === '$' ) {

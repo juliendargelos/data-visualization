@@ -10,8 +10,22 @@ Application.Mixin = class Mixin extends Application {
     if(typeof options !== 'object' || options === null) options = {};
     if(this.parent && !this.parent.mixed(object)) this.parent.mix(object, options);
 
-    for(var property in this.descriptors) {
-      Object.defineProperty(object.prototype, property, this.descriptors[property]);
+    var descriptors = this.descriptors;
+
+    for(var property in descriptors) {
+      if(typeof descriptors[property].value === 'function' && object.prototype.hasOwnProperty(property)) {
+        var method = object.prototype[property];
+        var override = descriptors[property].value;
+
+        // console.log(property, object.prototype[property], descriptors[property].value)
+
+        descriptors[property].value = function(...args) {
+          method.call(this, ...args);
+          return override.call(this, ...args);
+        };
+      }
+
+      Object.defineProperty(object.prototype, property, descriptors[property]);
     }
 
     object.mixed.push(this);
