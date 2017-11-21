@@ -430,30 +430,29 @@
   screaming: 7
   hairiness: 5
 
-# Fany Thourain Femme Designer
 - first_name: Fany
   last_name: Thourain
   gender: female
   speciality: designer
-  geographical_zone: ~
-  zone_type: ~
-  swimming: ~
-  nomadism: ~
-  mosquitos: ~
-  nostrils: ~
-  apnea: ~
-  survival: ~
-  flexibility: ~
-  surf: ~
-  size: ~
-  nose: ~
-  moles: ~
-  fight: ~
-  agility: ~
-  glasses: ~
-  chilling: ~
-  screaming: ~
-  hairiness: ~
+  geographical_zone: north
+  zone_type: urban
+  swimming: 30
+  nomadism: 5
+  mosquitos: true
+  nostrils: true
+  apnea: 50
+  survival: 5
+  flexibility: 7
+  surf: true
+  size: 1.7
+  nose: true
+  moles: 1
+  fight: false
+  agility: 6
+  glasses: true
+  chilling: 4
+  screaming: 8
+  hairiness: 0
 
 - first_name: Iris
   last_name: Mangin Sokolowsky
@@ -695,30 +694,29 @@
   screaming: 5
   hairiness: 3
 
-# Nikita Skargovskii  Homme Développeur
 - first_name: Nikita
   last_name: Skargovskii
   gender: male
   speciality: developer
-  geographical_zone: ~
-  zone_type: ~
-  swimming: ~
-  nomadism: ~
-  mosquitos: ~
-  nostrils: ~
-  apnea: ~
-  survival: ~
-  flexibility: ~
-  surf: ~
-  size: ~
-  nose: ~
-  moles: ~
-  fight: ~
-  agility: ~
-  glasses: ~
-  chilling: ~
-  screaming: ~
-  hairiness: ~
+  geographical_zone: south
+  zone_type: rural
+  swimming: 20
+  nomadism: 3
+  mosquitos: false
+  nostrils: true
+  apnea: 65
+  survival: 4
+  flexibility: 3
+  surf: false
+  size: 1.76
+  nose: false
+  moles: 1
+  fight: false
+  agility: 4
+  glasses: false
+  chilling: 6
+  screaming: 5
+  hairiness: 4
 
 - first_name: Noémie
   last_name: Ey
@@ -768,32 +766,30 @@
   screaming: 7
   hairiness: 7
 
-# Pauline Joy Femme Développeur
 - first_name: Pauline
-  last_name: Joy
+  last_name: Stichelbaut
   gender: female
   speciality: developer
-  geographical_zone: ~
-  zone_type: ~
-  swimming: ~
-  nomadism: ~
-  mosquitos: ~
-  nostrils: ~
-  apnea: ~
-  survival: ~
-  flexibility: ~
-  surf: ~
-  size: ~
-  nose: ~
-  moles: ~
-  fight: ~
-  agility: ~
-  glasses: ~
-  chilling: ~
-  screaming: ~
-  hairiness: ~
+  geographical_zone: other
+  zone_type: rural
+  swimming: 20
+  nomadism: 2
+  mosquitos: true
+  nostrils: false
+  apnea: 30
+  survival: 8
+  flexibility: 5
+  surf: false
+  size: 1.73
+  nose: false
+  moles: 1
+  fight: false
+  agility: 5
+  glasses: false
+  chilling: 1
+  screaming: 2
+  hairiness: 1
 
-# Rémi Caillot  Homme Développeur Ouest Rural 30  7 oui oui jamais reussi à m'arreter 2 4 Non 1,95  Non Peu
 - first_name: Rémi
   last_name: Caillot
   gender: male
@@ -804,19 +800,19 @@
   nomadism: 7
   mosquitos: true
   nostrils: true
-  apnea: ~
+  apnea: 30
   survival: 2
   flexibility: 4
   surf: false
   size: 1.95
   nose: false
   moles: 1
-  fight: ~
-  agility: ~
-  glasses: ~
-  chilling: ~
-  screaming: ~
-  hairiness: ~
+  fight: false
+  agility: 7
+  glasses: false
+  chilling: 2
+  screaming: 7
+  hairiness: 5
 
 - first_name: Rémi
   last_name: Eliet

@@ -58,7 +58,7 @@ Application.Bem.Modifiers = class Modifiers extends Application.Bem {
   }
 
   static pattern(name, modifier) {
-    return new RegExp('\\b' + name + '--' + modifier + '(?:--([^\\s]))?\\b', 'g');
+    return new RegExp('\\b' + name + '--' + modifier + '(?:--([^\\s]+))?\\b', 'g');
   }
 
   static className(name, modifier, value) {

@@ -1,16 +1,44 @@
+@function pixels($amount, $base: 1)
+  @return 100%/$base*$amount
+
 .character
-  &__full-leg
+  &__head
     transition: .4s
 
     @for $n from 0 through 9
-      @at-root #{&}--left#{&}--rendered--#{$n}
-        transform: rotate(#{$n/9*90}deg)
+      &--rotate--#{$n*10}
+        transform: rotate(#{($n - 4.5)*10}deg)
 
-      @at-root #{&}--right#{&}--rendered--#{$n}
-        transform: rotate(#{-$n/9*90}deg)
+    transform-origin: pixels(4.5, 9) pixels(10.5, 11)
+
+  &__arm
+    transition: .4s
+
+    @for $n from 0 through 18
+      @at-root #{&}--left#{&}--rotate--#{$n*10}
+        transform: rotate(#{$n*10}deg)
+
+      @at-root #{&}--right#{&}--rotate--#{$n*10}
+        transform: rotate(#{-$n*10}deg)
 
     &--left
-      transform-origin: 100px 475px
+      transform-origin: pixels(0.5) pixels(0.5, 4)
 
     &--right
-      transform-origin: 157px 475px
+      transform-origin: pixels(0.5) pixels(0.5, 4)
+
+  &__leg
+    transition: .4s
+
+    @for $n from 0 through 9
+      @at-root #{&}--left#{&}--rotate--#{$n*10}
+        transform: rotate(#{$n*10}deg)
+
+      @at-root #{&}--right#{&}--rotate--#{$n*10}
+        transform: rotate(#{-$n*10}deg)
+
+    &--left
+      transform-origin: pixels(1.5, 2) pixels(0.5, 5)
+
+    &--right
+      transform-origin: pixels(0.5, 2) pixels(0.5, 5)
