@@ -7,31 +7,8 @@
     <title>Data Visualization</title>
 
     <%= stylesheet_link_tag :application %>
-
-    <style>
-      .character {
-        top: 50%;
-        left: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-      }
-    </style>
   </head>
   <body>
     <%= yield %>
-    <%= javascript_include_tag :application %>
-
-    <script>
-      Application.initialize();
-
-      // TODO: remove
-      c = Application.Model.Character.first;
-      document.body.appendChild(c.element);
-      setInterval(() => {
-        var f = c.flexibility;
-        while(c.flexibility === f) c.flexibility = Math.floor(Math.random()*10);
-        c.render();
-      }, 400);
-    </script>
   </body>
 </html>

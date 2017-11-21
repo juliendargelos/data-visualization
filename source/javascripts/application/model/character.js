@@ -1,7 +1,7 @@
 Application.Model.Character = class Character extends Application.Model {
   static get includes() {
     return [
-      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'leg', 'head']}),
+      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'leg', 'head', 'name']}),
       Application.Mixin.Renderable.Templatable
     ];
   }
@@ -43,11 +43,16 @@ Application.Model.Character = class Character extends Application.Model {
           character.elements.head.modifiers.set({rotate: character.flexibility*10});
           character.elements.leg.modifiers.set({rotate: character.flexibility*10});
           character.elements.arm.modifiers.set({rotate: character.flexibility*20});
+          character.elements.name.text = character.full_name;
         }
       };
     }
 
     return this._renderers;
+  }
+
+  get full_name() {
+    return this.first_name + ' ' + this.last_name;
   }
 
   get gender() {

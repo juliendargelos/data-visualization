@@ -88,6 +88,16 @@ Application.Bem.Selector = class Selector extends Application.Bem {
     return this;
   }
 
+  get text() {
+    var node = this.node;
+    return node ? node.textContent : null;
+  }
+
+  set text(v) {
+    var node = this.node;
+    if(node) node.textContent = v;
+  }
+
   with(modifier, value) {
     if(typeof modifier === 'object' && modifier !== null) {
       for(var m in modifier) this.with(m, modifier[m]);

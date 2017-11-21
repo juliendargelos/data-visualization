@@ -2,6 +2,12 @@
   @return 100%/$base*$amount
 
 .character
+  width: 100%
+  height: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+
   &__head
     transition: .4s
 
@@ -42,3 +48,11 @@
 
     &--right
       transform-origin: pixels(0.5, 2) pixels(0.5, 5)
+
+  &__name
+    display: block
+    text-align: center
+    text-transform: uppercase
+    letter-spacing: .1em
+    font-weight: bold
+    font-size: 10px

@@ -5,3 +5,36 @@
 <%= embed_data :zone_types %>
 
 <%= templates %>
+
+<div class="characters"></div>
+
+<%= javascript_include_tag :application %>
+
+<script>
+  Application.initialize();
+
+  // TODO: remove
+  // c = Application.Model.Character.first;
+  // document.body.appendChild(c.element);
+  // setInterval(() => {
+  //   Application.Model.Character.all.forEach(c => {
+  //     var f = c.flexibility;
+  //     while(c.flexibility === f) c.flexibility = Math.floor(Math.random()*10);
+  //     c.render();
+  //   })
+  // }, 400);
+
+  var characters = document.querySelector('.characters');
+
+  Application.Model.Character.all.forEach(character => {
+    var box = document.createElement('div');
+    box.className = 'characters__box';
+    box.appendChild(character.element);
+
+    characters.appendChild(box);
+
+    setTimeout(function() {
+      character.render();
+    }, 100);
+  })
+</script>
