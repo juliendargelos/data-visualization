@@ -101,8 +101,39 @@ $machine-border-size: 5px
       z-index: 2
       position: absolute
 
+  &__monitor
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: contain
+
+    &--big
+      background-image: image-url('monitor-big.svg')
+      width: 172px
+      height: 104px
+      color: $light
+      font-size: 50px
+      line-height: 104px
+      text-align: center
+
+    &--small
+      background-image: image-url('monitor-small.svg')
+      width: 105px
+      height: 44px
+      flex-shrink: 0
+
   &__controls
-    height: 110px
+    padding: 10px
+    display: flex
+    align-items: center
+    justify-content: space-between
 
   &__pane
     background-color: $light
+
+  &__skills
+    width: 231px
+    height: 108px
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: space-between

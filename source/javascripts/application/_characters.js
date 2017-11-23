@@ -1,7 +1,9 @@
 Application.Characters = class Characters extends Application {
   static get includes() {
     return [
-      Application.Mixin.Renderable.Bemable
+      Application.Mixin.Renderable.Bemable.with({
+        elements: ['box']
+      })
     ];
   }
 
@@ -16,10 +18,18 @@ Application.Characters = class Characters extends Application {
     });
   }
 
-  static initialize() {
-    super.initialize();
+  add(...characters) {
+    characters.forEach(character => {
+      var box = document.createElement('box');
+      box.className = 'characters__box';
+      box.appendChild(character.element);
 
-    window.addEventListener('load', () => {
+      this.element.appendChild(box);
+    })
+  }
+
+  static initialize() {
+    super.initialize(() => {
       this.current = new this(Application.Bem.Selector.block(this.block).node);
     });
   }

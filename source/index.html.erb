@@ -15,7 +15,43 @@
 
       <div class="machine__head-front">
         <section class="machine__controls">
+          <div class="machine__monitor machine__monitor--big">
+            2100
+          </div>
 
+          <div class="button button--circle">
+            <i class="icon icon--block icon--character"></i>
+          </div>
+
+          <div class="machine__skills">
+            <% 4.times do |i| %>
+              <div class="machine__monitor machine__monitor--small">
+                <div class="selector">
+                  <div class="selector__wrapper">
+                    <% data.skills.each.with_index do |(value, label), j| %>
+                      <div class="selector__item<%= ' selector__item--selected' if i == j %>" data-value="<%= value %>"><%= label %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="button button--circle">
+            <i class="icon icon--block icon--storm"></i>
+          </div>
+
+          <div class="machine__monitor machine__monitor--big">
+            <div class="selector selector--big">
+              <div class="selector__wrapper">
+                <% data.events.each.with_index do |(value, label), n| %>
+                  <div class="selector__item<%= ' selector__item--selected' if n.zero? %>" data-value="<%= value %>"><%= label %></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="button button--ovoid">Start</div>
         </section>
       </div>
 
@@ -45,26 +81,8 @@
 <%= javascript_include_tag :application %>
 
 <script>
-  Application.initialize();
-
-  // TODO: remove
-  // c = Application.Model.Character.first;
-  // document.body.appendChild(c.element);
-  // setInterval(() => {
-  //   Application.Model.Character.all.forEach(c => {
-  //     var f = c.flexibility;
-  //     while(c.flexibility === f) c.flexibility = Math.floor(Math.random()*10);
-  //     c.render();
-  //   })
-  // }, 400);
-
-  var characters = document.querySelector('.characters');
-
-  Application.Model.Character.all.forEach(character => {
-    var box = document.createElement('div');
-    box.className = 'characters__box';
-    box.appendChild(character.element);
-
-    characters.appendChild(box);
+  Application.initialize(function() {
+    this.Characters.current.add(...this.Model.Character.all);
+    this.Model.Character.render();
   });
 </script>

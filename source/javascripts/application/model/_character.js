@@ -40,7 +40,8 @@ Application.Model.Character = class Character extends Application.Model {
       glasses: false,    // Lunettes                        (oui / non)
       chilling: 0,       // Sensibilité au froid            (note entre 0 et 9)
       screaming: 0,      // Capacité vocale                 (note entre 0 et 9)
-      hairiness: 0       // Pilosité                        (note entre 0 et 9)
+      hairiness: 0,      // Pilosité                        (note entre 0 et 9)
+      dead: false
     });
   }
 
@@ -126,7 +127,7 @@ Application.Model.Character = class Character extends Application.Model {
   }
 
   render(...attributes) {
-    this.elements.name.text = this.full_name;
+    this.elements.name.text = this.first_name;
 
     for(var renderer in this.constructor.renderers) {
       if(attributes.includes(renderer)) this.constructor.renderers[renderer].render(this);

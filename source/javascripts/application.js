@@ -31,7 +31,7 @@ class Application {
     return components;
   }
 
-  static initialize() {
+  static initialize(callback) {
     this.components.forEach(component => {
       if(component.prototype instanceof this) component.initialize();
     });
@@ -40,5 +40,7 @@ class Application {
       if(Application.Mixin.mixable(mixin)) mixin.mix(this);
       else throw "Include is not mixable:\n" + mixin;
     });
+
+    if(typeof callback === 'function') callback.call(this);
   }
 }

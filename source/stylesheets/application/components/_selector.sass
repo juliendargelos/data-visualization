@@ -1,0 +1,32 @@
+.selector
+  background: image-url('arrow.svg') no-repeat 4px center / auto 20px
+
+  height: 40px
+  padding-left: 30px
+  overflow: hidden
+  text-align: left
+
+  &__wrapper
+    height: auto
+    transition: transform .2s
+
+  &__item
+    height: 40px
+    line-height: 40px
+    color: $light
+    font-size: 14px
+    opacity: .5
+    transition: .2s
+
+    &--selected
+      opacity: 1
+
+  &--big
+    height: 90px
+
+  &--big &__item
+    height: 30px
+    line-height: 30px
+
+  &--big &__wrapper
+    margin-top: 31px

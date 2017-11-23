@@ -103,6 +103,15 @@ Application.Bem.Selector = class Selector extends Application.Bem {
     if(node) node.textContent = v;
   }
 
+  get index() {
+    var node = this.node;
+
+    if(node) {
+      return Array.prototype.indexOf.call(node.parentNode.children, node);
+    }
+    else return -1;
+  }
+
   with(modifier, value) {
     if(typeof modifier === 'object' && modifier !== null) {
       for(var m in modifier) this.with(m, modifier[m]);

@@ -1,0 +1,34 @@
+.button
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: contain
+  height: 104px
+  padding: 39px
+  box-sizing: border-box
+  align-items: center
+  flex-shrink: 0
+  color: $light
+  font-size: 40px
+  text-align: center
+  cursor: pointer
+  user-select: none
+
+  &--circle
+    background-image: image-url('button-circle.svg')
+    width: 104px
+    padding: 30px 25px 25px 25px
+    display: flex
+
+    &:active
+      background-image: image-url('button-circle-active.svg')
+      padding-top: 25px
+      padding-bottom: 30px
+
+  &--ovoid
+    background-image: image-url('button-ovoid.svg')
+    width: 192px
+
+    &:active
+      background-image: image-url('button-ovoid-active.svg')
+      padding-top: 34px
+      padding-bottom: 44px

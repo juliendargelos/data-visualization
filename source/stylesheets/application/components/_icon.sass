@@ -1,0 +1,14 @@
+.icon
+  background-repeat: no-repeat
+  background-position: center center
+  background-size: contain
+
+  &--block
+    width: 100%
+    height: 100%
+    display: block
+    margin: auto
+
+  @each $name in (character, storm)
+    &--#{$name}
+      background-image: image-url('icon-' + $name + '.svg')
