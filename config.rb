@@ -12,6 +12,12 @@ end
 
 activate :directory_indexes
 activate :sprockets
+activate :relative_assets
+
+activate :deploy do |deploy|
+  deploy.deploy_method = :git
+  deploy.branch = :master
+end
 
 # Layouts
 # https://middlemanapp.com/basics/layouts/
@@ -22,11 +28,6 @@ page '/*.json', layout: false
 page '/*.txt', layout: false
 
 ignore '/templates/*.{svg}'
-
-activate :deploy do |deploy|
-  deploy.deploy_method = :git
-  deploy.branch = :master
-end
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
