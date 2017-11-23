@@ -4,6 +4,10 @@ Application.Mixin.Renderable = class Renderable extends Application.Mixin {
     return this._element;
   }
 
+  set element(v) {
+    this._element = v;
+  }
+
   get elements() {
     if(!this._elements) {
       this._elements = {};
@@ -14,8 +18,7 @@ Application.Mixin.Renderable = class Renderable extends Application.Mixin {
   }
 
   create() {
-    this._element = document.createElement('div');
-    return this._element;
+
   }
 
   render() {

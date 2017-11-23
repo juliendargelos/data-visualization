@@ -17,15 +17,19 @@ Application.Mixin = class Mixin extends Application {
         var method = object.prototype[property];
         var override = descriptors[property].value;
 
-        // console.log(property, object.prototype[property], descriptors[property].value)
-
         descriptors[property].value = function(...args) {
           method.call(this, ...args);
           return override.call(this, ...args);
         };
       }
 
-      Object.defineProperty(object.prototype, property, descriptors[property]);
+      var descriptor = Object.assign(Object.getOwnPropertyDescriptor(object.prototype, property) || {}, descriptors[property]);
+
+      console.log(property, Object.getOwnPropertyDescriptor(object.prototype, property), descriptors[property])
+
+      // if(descriptor.get || descriptor.set) delete descriptor.value;
+
+      Object.defineProperty(object.prototype, property, descriptor);
     }
 
     object.mixed.push(this);

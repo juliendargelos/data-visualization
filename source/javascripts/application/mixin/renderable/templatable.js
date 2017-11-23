@@ -1,7 +1,7 @@
 Application.Mixin.Renderable.Templatable = class Templatable extends Application.Mixin.Renderable {
   create() {
-    this._element = this.constructor.template.cloneNode(true);
-    return this._element;
+    this.element = this.constructor.template.cloneNode(true);
+    return this.element;
   }
 
   static mix(object, options) {

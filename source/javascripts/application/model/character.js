@@ -1,7 +1,15 @@
 Application.Model.Character = class Character extends Application.Model {
   static get includes() {
     return [
-      Application.Mixin.Renderable.Bemable.with({elements: ['arm', 'leg', 'head', 'name']}),
+      Application.Mixin.Renderable.Bemable.with({
+        elements: [
+          'head',
+          'body',
+          'arm', 'hand',
+          'leg', 'foot',
+          'name'
+        ]
+      }),
       Application.Mixin.Renderable.Templatable
     ];
   }
@@ -39,11 +47,41 @@ Application.Model.Character = class Character extends Application.Model {
   static get renderers() {
     if(!this._renderers) {
       this._renderers = {
-        flexibility: character => {
-          character.elements.head.modifiers.set({rotate: character.flexibility*10});
-          character.elements.leg.modifiers.set({rotate: character.flexibility*10});
-          character.elements.arm.modifiers.set({rotate: character.flexibility*20});
-          character.elements.name.text = character.full_name;
+        flexibility: {
+          render: character => {
+            character.elements.leg.with('flexibility').modifiers.set({flexibility: character.flexibility});
+          },
+
+          clear: character => {
+            character.elements.leg.with('flexibility').modifiers.set('flexibility');
+          }
+        },
+        swimming: {
+          render: character => {
+            ['arm', 'hand', 'leg', 'foot'].forEach(part => {
+              character.elements[part].with('swimming').modifiers.set({swimming: 'enabled'});
+            });
+          },
+
+          clear: character => {
+            ['arm', 'hand', 'leg', 'foot'].forEach(part => {
+              character.elements[part].with('swimming').modifiers.set('swimming');
+            });
+          }
+        }
+        ,
+        chilling: {
+          render: character => {
+            ['head', 'arm', 'hand', 'leg', 'foot'].forEach(part => {
+              character.elements[part].with('chilling').modifiers.set({chilling: 'enabled'});
+            });
+          },
+
+          clear: character => {
+            ['head', 'arm', 'hand', 'leg', 'foot'].forEach(part => {
+              character.elements[part].with('chilling').modifiers.set('chilling');
+            });
+          }
         }
       };
     }
@@ -56,39 +94,53 @@ Application.Model.Character = class Character extends Application.Model {
   }
 
   get gender() {
-    return this._gender;
+    return Application.Model.Gender.find(this._gender);
   }
 
   set gender(v) {
-    this._gender = Application.Model.Gender.find(v);
+    this._gender = v;
   }
 
   get speciality() {
-    return this._speciality;
+    return Application.Model.Speciality.find(this._speciality);
   }
 
   set speciality(v) {
-    this._speciality = Application.Model.Speciality.find(v);
+    this._speciality = v;
   }
 
   get geographical_zone() {
-    return this._geographicalZone;
+    return Application.Model.GeographicalZone.find(this._geographicalZone);
   }
 
   set geographical_zone(v) {
-    this._geographicalZone = Application.Model.GeographicalZone.find(v);
+    this._geographicalZone = v;
   }
 
   get zone_type() {
-    return this._zoneType;
+    return Application.Model.ZoneType.find(this._zoneType);
   }
 
   set zone_type(v) {
-    this._zoneType = Application.Model.ZoneType.find(v);
+    this._zoneType = v;
   }
 
-  render() {
-    this.constructor.renderers.flexibility(this);
+  render(...attributes) {
+    this.elements.name.text = this.full_name;
+
+    for(var renderer in this.constructor.renderers) {
+      if(attributes.includes(renderer)) this.constructor.renderers[renderer].render(this);
+      else this.constructor.renderers[renderer].clear(this);
+    }
+  }
+
+  static get all() {
+    if(!this._all) this._all = new Application.Model.Collection.Character();
+    return this._all;
+  }
+
+  static render(...attributes) {
+    this.all.render(...attributes);
   }
 
   static initialize() {

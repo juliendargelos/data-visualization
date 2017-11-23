@@ -1,0 +1,108 @@
+$machine-top-size: 34px
+$machine-border-size: 5px
+
+.machine
+  width: 100%
+  height: 100%
+  display: flex
+  flex-wrap: wrap
+
+  &__main
+    width: 100%
+    height: auto
+    max-width: #{1840px - $spacing*2}
+    margin: auto
+    display: flex
+    flex-direction: column
+
+  &__head-top, &__body-top
+    width: calc(100% - #{$machine-top-size*2})
+    height: $machine-top-size
+    margin: 0 auto
+    justify-content: space-between
+    display: flex
+
+    &::before, &::after
+      content: ''
+      background-repeat: no-repeat
+      background-position: 0 0
+      background-size: auto 100%
+      width: $machine-top-size
+      height: $machine-top-size
+      display: block
+      +flex-static
+
+    &::before
+      transform: translateX(-100%)
+
+    &::after
+      transform: translateX(100%) scale(-1, 1)
+
+  &__head
+    +flex-static
+
+  &__head-top
+    background: $light
+    box-shadow: inset 0 $machine-border-size 0 $dark-brown
+
+    &::before, &::after
+      background-image: image-url('head-top.svg')
+
+  &__head-front
+    background-color: $light-brown
+    border: $machine-border-size solid $dark-brown
+
+  &__head-bottom
+    width: 100%
+    display: flex
+    z-index: 2
+    position: relative
+    align-items: start
+    justify-content: space-around
+
+  &__bolt
+    background: image-url('bolt.svg') no-repeat center 0 / contain
+    width: 37px
+    height: 26px
+    +flex-static
+
+  &__body
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+
+  &__body-top
+    background: $dark-brown
+    margin-top: -26px
+    +flex-static
+
+    &::before, &::after
+      background-image: image-url('body-top.svg')
+
+  &__body-front
+    border: $machine-border-size solid $dark-brown
+    height: 100%
+    padding: 62px
+    flex-grow: 1
+    position: relative
+    overflow: scroll
+
+    &::before
+      content: ''
+      background-image: image-url('body-corner-top-left.svg'), image-url('body-corner-top-right.svg'), image-url('body-corner-bottom-right.svg'), image-url('body-corner-bottom-left.svg'), image-url('body-front-top.svg'), image-url('body-front-right.svg'), image-url('body-front-bottom.svg'), image-url('body-front-left.svg')
+      background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-y, repeat-x, repeat-y
+      background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 1px 62px, 62px 1px, 1px 62px, 62px 1px
+      background-position: top left, top right, bottom right, bottom left
+
+      width: 100%
+      height: 100%
+      top: 0
+      left: 0
+      z-index: 2
+      position: absolute
+
+  &__controls
+    height: 110px
+
+  &__pane
+    background-color: $light

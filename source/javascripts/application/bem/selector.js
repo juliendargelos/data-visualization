@@ -10,15 +10,20 @@ Application.Bem.Selector = class Selector extends Application.Bem {
 
   get selector() {
     if(!this._selector && this.basename) {
-      var className = [this.basename];
+      var selector = ['.' + this.basename];
       var value;
 
       for(var modifier in this._modifiers) {
         value = this._modifiers[modifier];
-        className.push(this.basename + '--' + modifier + (value === true ? '' : '--' + value))
+        if(value === Infinity) {
+          selector.push('[class*="' + this.basename + '--' + modifier + '"]');
+        }
+        else {
+          selector.push('.' + this.basename + '--' + modifier + (value === true ? '' : '--' + value));
+        }
       }
 
-      this._selector = '.' + className.join('.');
+      this._selector = selector.join('');
     }
 
     return this._selector;
@@ -103,10 +108,11 @@ Application.Bem.Selector = class Selector extends Application.Bem {
       for(var m in modifier) this.with(m, modifier[m]);
     }
     else {
-      value = value ? (typeof value === 'string' ? value : true) : undefined;
+      if(arguments.length == 1) value = Infinity;
+      else value = value ? (typeof value === 'string' ? value : true) : undefined;
 
       if(value !== this._modifiers[modifier]) {
-        if(value) this._modifiers[modifier] = value
+        if(value) this._modifiers[modifier] = value;
         else delete this._modifiers[modifier];
         this._selector = null;
       }

@@ -1,0 +1,54 @@
+<svg class="character__effigy" xmlns="http://www.w3.org/2000/svg" width="570" height="750" viewBox="0 0 570 750">
+  <g transform="translate(210 540)">
+    <g class="character__leg character__leg--left">
+      <polygon fill="#000" points="30 90 60 90 60 150 0 150 0 120 30 120"/>
+      <rect width="30" height="30" x="30" y="60" fill="#ffd8c2"/>
+      <path fill="#264c10" d="M45,0 C53.2842712,0 60,6.70811389 60,15.0050808 L60,60 L30,60 L30,15.0050808 C30,6.71800351 36.7139073,0 45,0 L45,0 Z"/>
+    </g>
+  </g>
+
+  <g transform="translate(300 540)">
+    <g class="character__leg character__leg--right">
+      <polygon fill="#000" points="0 90 30 90 30 120 60 120 60 150 0 150"/>
+      <rect width="30" height="30" y="60" fill="#ffd8c2"/>
+      <path fill="#264c10" d="M15,0 C23.2842712,0 30,6.70811389 30,15.0050808 L30,60 L0,60 L0,15.0050808 C0,6.71800351 6.71390727,0 15,0 L15,0 Z"/>
+    </g>
+  </g>
+
+  <g transform="translate(180 360)">
+    <g class="character__body">
+      <polygon fill="#264c10" points="150 180 150 210 60 210 60 180"/>
+      <path fill="#d6d6d6" d="M0,105 C0,96.7157288 6.71390727,90 15,90 L30,90 L30,60 L180,60 L180,90 L195,90 C203.284271,90 210,96.7139073 210,105 L210,105 C210,113.284271 203.291886,120 194.994919,120 L150,120 L150,180 L60,180 L60,120 L15.0050808,120 C6.71800351,120 0,113.286093 0,105 L0,105 Z"/>
+      <path fill="#efcebf" d="M90,15.0006489 C90,6.71601926 96.7139073,0 105,0 L105,0 C113.284271,0 120,6.70944966 120,15.0006489 L120,90 L90,90 L90,15.0006489 Z"/>
+    </g>
+  </g>
+
+  <g transform="translate(180 450)">
+    <g class="character__arm character__arm--left">
+      <rect width="30" height="30" y="90" fill="#ffd8c2"/>
+      <polygon fill="#d6d6d6" points="0 0 30 0 30 90 0 90"/>
+    </g>
+  </g>
+
+  <g transform="translate(360 450)">
+    <g class="character__arm character__arm--right">
+      <rect width="30" height="30" y="90" fill="#ffd8c2"/>
+      <polygon fill="#d6d6d6" points="0 0 30 0 30 90 0 90"/>
+    </g>
+  </g>
+
+  <g transform="translate(150 60)">
+    <g class="character__head">
+      <polygon fill="#000" points="120 0 210 0 210 30 210 90 60 90 60 30 120 30"/>
+      <polygon fill="#ffd8c2" points="60 90 210 90 210 180 270 180 270 240 210 240 210 330 150 330 150 240 120 240 120 330 60 330 60 240 0 240 0 180 60 180"/>
+      <rect width="30" height="30" x="120" y="180" fill="#d8b9a9"/>
+      <rect width="30" height="30" x="240" y="210" fill="#d8b9a9"/>
+      <rect width="30" height="30" y="210" fill="#d8b9a9"/>
+      <rect width="30" height="30" x="150" fill="#494949"/>
+      <rect width="30" height="30" x="120" y="240" fill="#efcebf"/>
+      <rect width="30" height="30" x="120" y="300" fill="#efcebf"/>
+      <path fill="#000" d="M30 120L120 120 120 210 30 210 30 120zM60 150L60 180 90 180 90 150 60 150zM150 120L240 120 240 210 150 210 150 120zM180 150L180 180 210 180 210 150 180 150z"/>
+      <rect width="30" height="30" x="120" y="150" fill="#000"/>
+    </g>
+  </g>
+</svg>

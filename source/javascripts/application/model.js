@@ -59,6 +59,10 @@ Application.Model = class Model extends Application {
     return this.all.whereNot(...args);
   }
 
+  static order(...args) {
+    return this.all.order(...args);
+  }
+
   static average(...args) {
     return this.all.average(...args);
   }

@@ -1,0 +1,27 @@
+=flex-static
+  flex-grow: 0
+  flex-shrink: 0
+
+=portrait
+  @media screen and (orientation: portrait)
+    @content
+
+=landscape
+  @media screen and (orientation: landscape)
+    @content
+
+=max-width($size)
+  @media screen and (max-width: $size)
+    @content
+
+=min-width($size)
+  @media screen and (min-width: $size + 1px)
+    @content
+
+=max-height($size)
+  @media screen and (max-height: $size)
+    @content
+
+=min-height($size)
+  @media screen and (min-height: $size + 1px)
+    @content

@@ -3,6 +3,15 @@ Application.Mixin.Renderable.Bemable = class Bemable extends Application.Mixin.R
     return new Application.Bem.Selector(this.element).block(this.constructor.block);
   }
 
+  get element() {
+    return super.element;
+  }
+
+  set element(v) {
+    this._element = v;
+    this.modifiers.node(this._element);
+  }
+
   get elements() {
     if(!this._elements) {
       this._elements = {};
@@ -20,11 +29,6 @@ Application.Mixin.Renderable.Bemable = class Bemable extends Application.Mixin.R
     }
 
     return this._modifiers;
-  }
-
-  create() {
-    this.modifiers.node(this._element);
-    return this._element;
   }
 
   static defineElement(object, element) {

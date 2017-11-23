@@ -6,7 +6,41 @@
 
 <%= templates %>
 
-<div class="characters"></div>
+<main class="machine">
+  <div class="machine__extra machine__extra--left"></div>
+
+  <div class="machine__main">
+    <div class="machine__head">
+      <div class="machine__head-top"></div>
+
+      <div class="machine__head-front">
+        <section class="machine__controls">
+
+        </section>
+      </div>
+
+      <div class="machine__head-bottom">
+        <div class="machine__bolt"></div>
+        <div class="machine__bolt"></div>
+        <div class="machine__bolt"></div>
+        <div class="machine__bolt"></div>
+        <div class="machine__bolt"></div>
+      </div>
+    </div>
+
+    <div class="machine__body">
+      <div class="machine__body-top"></div>
+      <div class="machine__body-front">
+        <section class="machine__pane">
+          <div class="characters"></div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="machine__extra machine__extra--right"></div>
+  <div class="machine__extra machine__extra--bottom"></div>
+</main>
 
 <%= javascript_include_tag :application %>
 
@@ -32,9 +66,5 @@
     box.appendChild(character.element);
 
     characters.appendChild(box);
-
-    setTimeout(function() {
-      character.render();
-    }, 100);
-  })
+  });
 </script>

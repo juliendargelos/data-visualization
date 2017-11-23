@@ -1,5 +1,5 @@
-@function pixels($amount, $base: 1)
-  @return 100%/$base*$amount
+@function pixels($amount, $size: 30px)
+  @return $amount*$size
 
 .character
   width: 100%
@@ -8,46 +8,95 @@
   flex-direction: column
   align-items: center
 
+  &__effigy
+    width: 100%
+    height: auto
+    display: block
+
+  &__body
+    transform-origin: pixels(3.5) pixels(2)
+
   &__head
-    transition: .4s
+    transform-origin: pixels(4.5) pixels(10.5)
 
-    @for $n from 0 through 9
-      &--rotate--#{$n*10}
-        transform: rotate(#{($n - 4.5)*10}deg)
-
-    transform-origin: pixels(4.5, 9) pixels(10.5, 11)
+    &--chilling--enabled
+      animation: chilling .1s infinite
 
   &__arm
-    transition: .4s
+    &--swimming--enabled
+      &.character__arm--left
+        animation: character-arm-swimming-left 1s infinite
 
-    @for $n from 0 through 18
-      @at-root #{&}--left#{&}--rotate--#{$n*10}
-        transform: rotate(#{$n*10}deg)
+      &.character__arm--right
+        animation: character-arm-swimming-right 1s infinite
 
-      @at-root #{&}--right#{&}--rotate--#{$n*10}
-        transform: rotate(#{-$n*10}deg)
+    &--chilling--enabled
+      animation: chilling .1s infinite
 
-    &--left
-      transform-origin: pixels(0.5) pixels(0.5, 4)
+    &--displacement
 
-    &--right
-      transform-origin: pixels(0.5) pixels(0.5, 4)
+    &--left, &--right
+      transform-origin: pixels(0.5) pixels(0.5)
+
+  &__hand
+    &--swimming--enabled
+      &.character__hand--left
+        animation: character-hand-swimming-left 1s infinite
+
+      &.character__hand--right
+        animation: character-hand-swimming-right 1s infinite
+
+    &--chilling--enabled
+      animation: chilling .1s infinite
+
+    &--left, &--right
+      transform-origin: pixels(0.5) pixels(0.5)
 
   &__leg
     transition: .4s
 
-    @for $n from 0 through 9
-      @at-root #{&}--left#{&}--rotate--#{$n*10}
-        transform: rotate(#{$n*10}deg)
+    &--flexibility
+      @for $n from 0 through 9
+        @at-root &--#{$n}.character__leg--left
+          transform: rotate(#{$n*10}deg)
 
-      @at-root #{&}--right#{&}--rotate--#{$n*10}
-        transform: rotate(#{-$n*10}deg)
+        @at-root &--#{$n}.character__leg--right
+          transform: rotate(#{-$n*10}deg)
+
+    &--swimming--enabled
+      &.character__leg--left
+        animation: character-leg-swimming-left 1s infinite
+
+      &.character__leg--right
+        animation: character-leg-swimming-right 1s infinite
+
+    &--chilling--enabled
+      animation: chilling .1s infinite
+
+    &--displacement
 
     &--left
-      transform-origin: pixels(1.5, 2) pixels(0.5, 5)
+      transform-origin: pixels(1.5) pixels(0.5)
 
     &--right
-      transform-origin: pixels(0.5, 2) pixels(0.5, 5)
+      transform-origin: pixels(0.5) pixels(0.5)
+
+  &__foot
+    &--swimming--enabled
+      &.character__foot--left
+        animation: character-foot-swimming-left 1s infinite
+
+      &.character__foot--right
+        animation: character-foot-swimming-right 1s infinite
+
+    &--chilling--enabled
+      animation: chilling .1s infinite
+
+    &--left
+      transform-origin: pixels(1.5) pixels(0.5)
+
+    &--right
+      transform-origin: pixels(0.5) pixels(0.5)
 
   &__name
     display: block
@@ -56,3 +105,108 @@
     letter-spacing: .1em
     font-weight: bold
     font-size: 10px
+
+@keyframes character-arm-swimming-left
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(180deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-arm-swimming-right
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(-180deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-hand-swimming-left
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(45deg)
+
+  75%
+    transform: rotate(-45deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-hand-swimming-right
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(-45deg)
+
+  75%
+    transform: rotate(45deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-leg-swimming-left
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(60deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-leg-swimming-right
+  0%
+    transform: rotate(0)
+
+  50%
+    transform: rotate(-60deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-foot-swimming-left
+  0%
+    transform: rotate(0)
+
+  25%
+    transform: rotate(0)
+
+  75%
+    transform: rotate(-60deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes character-foot-swimming-right
+  0%
+    transform: rotate(0)
+
+  25%
+    transform: rotate(0)
+
+  75%
+    transform: rotate(60deg)
+
+  100%
+    transform: rotate(0)
+
+@keyframes chilling
+  0%
+    transform: rotate(0)
+
+  25%
+    transform: rotate(3deg)
+
+  75%
+    transform: rotate(-3deg)
+
+  100%
+    transform: rotate(0)

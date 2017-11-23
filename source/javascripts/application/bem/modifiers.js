@@ -23,6 +23,9 @@ Application.Bem.Modifiers = class Modifiers extends Application.Bem {
       for(var m in modifier) this.set(m, modifier[m]);
     }
     else {
+      if(typeof value === 'number') value = '' + value;
+      if(arguments.length === 1) value = true;
+
       this.elements.forEach(element => {
         var className = element.getAttribute('class');
         className = className ? className.replace(this.constructor.pattern(this.basename, modifier), '') : '';

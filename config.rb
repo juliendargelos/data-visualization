@@ -46,7 +46,7 @@ end
 
 helpers do
   def svg *parts
-    File.read IMAGES + parts.join('/').sub(/\.svg\z/, '') + '.svg'
+    File.read IMAGES + (parts.join('/').sub(/\.svg\z/, '') + '.svg')
   end
 
   def template *parts, name: nil
