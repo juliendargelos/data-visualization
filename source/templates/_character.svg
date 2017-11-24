@@ -1,4 +1,4 @@
-<div class="character">
+
   <svg class="character__effigy" width="630px" height="810px" viewBox="0 0 630 810" xmlns="http://www.w3.org/2000/svg">
   <g transform="translate(210, 510)">
     <g class="character__body character__body--chilling">
@@ -119,4 +119,3 @@
 
 
   <span class="character__name"></span>
-</div>

@@ -1,0 +1,56 @@
+<div class="character">
+  <svg class="character__effigy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 900">
+    <path fill="#d6b094" d="M390,418.87s0-15,15-15,15,15,15,15v30H390Z"/>
+    <polygon fill="#d6d6d6" points="300 478.87 300 508.87 300 538.87 330 538.87 330 508.87 330 478.87 300 478.87"/>
+    <polygon points="420 478.87 420 508.87 390 508.87 360 508.87 360 538.87 390 538.87 420 538.87 450 538.87 450 508.87 450 478.87 420 478.87"/>
+    <path fill="#d6d6d6" d="M390,448.87H330v30s-14.4,0-14.4,15,14.4,15,14.4,15h90v-30H390Z"/>
+    <path fill="#d6d6d6" d="M480,478.87v-30H420v30h30v30h30s15,0,15-15S480,478.87,480,478.87Z"/>
+    <polygon fill="#d6d6d6" points="390 538.87 360 538.87 360 568.87 390 568.87 420 568.87 450 568.87 450 538.87 420 538.87 390 538.87"/>
+    <polygon points="420 568.87 390 568.87 360 568.87 360 598.87 390 598.87 420 598.87 450 598.87 450 568.87 420 568.87"/>
+    <rect fill="#fccfa9" x="390" y="448.87" width="30" height="30"/>
+    <polygon fill="#d6d6d6" points="480 478.87 480 508.87 480 538.87 510 538.87 510 508.87 510 478.87 480 478.87"/>
+
+    <%= character_part :leg, :left, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :left, [:swimming] %>
+        <polygon fill="#ff0000" points="450 868.87 450 838.87 420 838.87 420 868.87 420 898.87 450 898.87 480 898.87 480 868.87 450 868.87"/>
+        <path d="M435,734.19c-14.4,0-15,15-15,15v89.68h30V749.19S449.4,734.19,435,734.19Z"/>
+      <%= character_part :foot, :left %>
+      <path d="M435,583.87c-15,0-15,15-15,15v90h30v-90S450,583.87,435,583.87Z"/>
+      <path d="M420,718.87v30s.6,15,15,15,15-15,15-15V689H420Z"/>
+    <%= character_part :leg, :left %>
+
+    <%= character_part :leg, :right, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :right, [:swimming] %>
+        <polygon fill="#ff0000" points="360 838.87 360 868.87 330 868.87 330 898.87 360 898.87 390 898.87 390 868.87 390 838.87 360 838.87"/>
+        <path d="M375,734.19c-14.4,0-15,15-15,15v89.68h30V749.19S389.4,734.19,375,734.19Z"/>
+      <%= character_part :leg, :right %>
+      <path d="M375,583.87c-15,0-15,15-15,15v90h30v-90S390,583.87,375,583.87Z"/>
+      <path d="M360,718.87v30s.6,15,15,15,15-15,15-15V689H360Z"/>
+    <%= character_part :foot, :right %>
+
+    <%= character_part :arm, :left, [:swimming, :chilling] %>
+      <%= character_part :hand, :left, [:swimming] %>
+        <path fill="#d6d6d6" d="M480,538.87s0-15,15-15,15,15,15,15v30H480Z"/>
+        <rect fill="#fccfa9" x="480" y="568.87" width="30" height="30"/>
+      <%= character_part :hand, :left %>
+    <%= character_part :arm, :left %>
+
+    <%= character_part :arm, :right, [:swimming, :chilling] %>
+      <%= character_part :hand, :right, [:swimming] %>
+        <path fill="#d6d6d6" d="M300,538.87s0-15,15-15,15,15,15,15v30H300Z"/>
+        <rect fill="#fccfa9" x="300" y="568.87" width="30" height="30"/>
+      <%= character_part :hand, :right %>
+    <%= character_part :arm, :right %>
+
+    <%= character_part :head, [:chilling] %>
+      <polygon points="480 148.87 480 118.87 450 118.87 450 88.87 420 88.87 390 88.87 360 88.87 330 88.87 330 118.87 300 118.87 300 148.87 300 178.87 300 208.87 300 238.87 300 268.87 330 268.87 330 238.87 330 208.87 330 178.87 360 178.87 390 178.87 420 178.87 450 178.87 480 178.87 480 208.87 480 238.87 480 268.87 510 268.87 510 238.87 510 208.87 510 178.87 510 148.87 480 148.87"/>
+      <rect x="330" y="268.87" width="30" height="30"/>
+      <rect x="450" y="268.87" width="30" height="30"/>
+      <rect fill="#d6b094" x="270" y="298.87" width="30" height="30"/>
+      <rect fill="#d6b094" x="510" y="298.87" width="30" height="30"/>
+      <rect fill="#d6b094" x="390" y="328.87" width="30" height="30"/>
+      <rect fill="#fff" x="390" y="358.87" width="30" height="30"/>
+      <path fill="#fccfa9" d="M510,268.87H480v30H450v-30h30v-90H330v90h30v30H330v-30H270v30h30v30h30v90H480v-90h30v-30h30v-30Zm-120,120v-60h30v60Z"/>
+    <%= character_part :head %>
+  </svg>
+</div>

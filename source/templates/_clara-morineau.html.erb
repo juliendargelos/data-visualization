@@ -1,0 +1,60 @@
+<div class="character">
+  <svg class="character__effigy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 900">
+    <rect fill="#fff" x="390" y="480.33" width="30" height="30"/>
+    <path d="M480,510.33v-30H420v30H390v-30H330v30s-15,0-15,15,15,15,15,15h30v90h90v-90h30s15,0,15-15S480,510.33,480,510.33Z"/>
+    <path fill="#d6b7a7" d="M390,450s0-15,15-15,15,15,15,15v30H390Z"/>
+
+    <%= character_part :leg, :left, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :left, [:swimming] %>
+        <path d="M435,735c-14.4,0-15,15-15,15v60h30V750S449.4,735,435,735Z"/>
+        <rect x="420" y="840" width="30" height="30"/>
+        <polygon fill="#fff" points="450 870 420 870 420 900 450 900 480 900 480 870 450 870"/>
+        <rect fill="#ffd8c2" x="420" y="810" width="30" height="30"/>
+      <%= character_part :foot, :left %>
+      <path d="M435,615.33c-14.4,0-15,15-15,15V750s.6,15,15,15,15-15,15-15V630.33S449.4,615.33,435,615.33Z"/>
+    <%= character_part :leg, :left %>
+
+    <%= character_part :leg, :right, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :right, [:swimming] %>
+        <path d="M375,735c-14.4,0-15,15-15,15v60h30V750S389.4,735,375,735Z"/>
+        <rect x="360" y="840" width="30" height="30"/>
+        <polygon fill="#fff" points="360 870 330 870 330 900 360 900 390 900 390 870 360 870"/>
+        <rect fill="#ffd8c2" x="360" y="810" width="30" height="30"/>
+      <%= character_part :foot, :right %>
+      <path d="M375,615.33c-14.4,0-15,15-15,15V750s.6,15,15,15,15-15,15-15V630.33S389.4,615.33,375,615.33Z"/>
+    <%= character_part :leg, :right %>
+
+    <%= character_part :arm, :left, [:swimming, :chilling] %>
+      <%= character_part :hand, :left, [:swimming] %>
+        <path fill="#fff" d="M480,570s0-15,15-15,15,15,15,15v30H480Z"/>
+        <rect fill="#ffd8c2" x="480" y="600.33" width="30" height="30"/>
+      <%= character_part :hand, :left %>
+      <polygon points="480 510.33 480 540.33 480 570.33 510 570.33 510 540.33 510 510.33 480 510.33"/>
+    <%= character_part :arm, :left %>
+
+    <%= character_part :arm, :right, [:swimming, :chilling] %>
+      <%= character_part :hand, :left, [:swimming] %>
+        <path fill="#fff" d="M300,570s0-15,15-15,15,15,15,15v30H300Z"/>
+        <rect fill="#ffd8c2" x="300" y="600.33" width="30" height="30"/>
+      <%= character_part :hand, :left %>
+      <polygon points="300 510.33 300 540.33 300 570.33 330 570.33 330 540.33 330 510.33 300 510.33"/>
+    <%= character_part :arm, :right %>
+
+    <%= character_part :head, [:chilling] %>
+      <rect x="330" y="300.33" width="30" height="30"/>
+      <rect x="450" y="300.33" width="30" height="30"/>
+      <rect fill="#d6b7a7" x="390" y="360.33" width="30" height="30"/>
+      <rect fill="#fff" x="390" y="390.33" width="30" height="30"/>
+      <rect fill="#ffd8c2" x="300" y="300.33" width="30" height="30"/>
+      <path fill="#ffd8c2" d="M450,300.33h30v-90H330v90h30v30H330v90h30v30h90v-30h30v-90H450Zm-60,120v-60h30v60Z"/>
+      <rect fill="#ffd8c2" x="480" y="300.33" width="30" height="30"/>
+      <polygon fill="#602b00" points="510 270.33 510 240.33 510 210.33 510 180.33 480 180.33 480 150.33 450 150.33 420 150.33 390 150.33 360 150.33 360 180.33 330 180.33 300 180.33 300 210.33 300 240.33 300 270.33 270 270.33 270 300.33 270 330.33 270 360.33 300 360.33 300 390.33 300 420.33 300 450.33 270 450.33 270 480.33 300 480.33 330 480.33 330 450.33 360 450.33 360 420.33 330 420.33 330 390.33 330 360.33 330 330.33 300 330.33 300 300.33 330 300.33 330 270.33 330 240.33 330 210.33 360 210.33 390 210.33 420 210.33 450 210.33 480 210.33 480 240.33 480 270.33 480 300.33 510 300.33 510 330.33 480 330.33 480 360.33 480 390.33 480 420.33 450 420.33 450 450.33 450 480.33 480 480.33 480 450.33 510 450.33 510 420.33 510 390.33 510 360.33 540 360.33 540 330.33 540 300.33 540 270.33 510 270.33"/>
+      <rect fill="#602b00" x="510" y="450.33" width="30" height="30"/>
+      <polygon fill="#893b00" points="510 360.33 510 390.33 510 420.33 510 450.33 540 450.33 540 420.33 540 390.33 540 360.33 510 360.33"/>
+      <polygon fill="#893b00" points="300 420.33 300 390.33 300 360.33 270 360.33 270 390.33 270 420.33 270 450.33 300 450.33 300 420.33"/>
+      <rect fill="#893b00" x="330" y="450.33" width="30" height="30"/>
+      <polygon fill="#893b00" points="480 480.33 480 510.33 510 510.33 510 540.33 510 570.33 540 570.33 540 540.33 540 510.33 540 480.33 510 480.33 510 450.33 480 450.33 480 480.33"/>
+      <polygon fill="#893b00" points="270 480.33 270 510.33 270 540.33 270 570.33 300 570.33 300 540.33 300 510.33 330 510.33 330 480.33 300 480.33 270 480.33"/>
+    <%= character_part :head %>
+  </svg>
+</div>

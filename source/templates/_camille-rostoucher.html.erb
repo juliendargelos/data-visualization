@@ -1,0 +1,61 @@
+<div class="character">
+  <svg class="character__effigy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 900">
+    <%= character_part :leg, :left, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :left, [:swimming] %>
+        <path fill="#001c3d" d="M450,840H420V810s.6-15,15-15,15,15,15,15Z"/>
+        <rect fill="#ffd5c2" x="420" y="840" width="30" height="30"/>
+        <polygon points="450 870 420 870 420 900 450 900 480 900 480 870 450 870"/>
+      <%= character_part :foot, :left %>
+      <path fill="#001c3d" d="M435,765c-14.4,0-15,15-15,15v30s.6,15,15,15,15-15,15-15V780S449.4,765,435,765Z"/>
+    <%= character_part :leg, :left %>
+
+    <%= character_part :leg, :right, [:flexibility, :swimming, :displacement, :chilling] %>
+      <%= character_part :foot, :right, [:swimming] %>
+        <path fill="#001c3d" d="M390,840H360V810s.6-15,15-15,15,15,15,15Z"/>
+        <rect fill="#ffd5c2" x="360" y="840" width="30" height="30"/>
+        <polygon points="360 870 330 870 330 900 360 900 390 900 390 870 360 870"/>
+      <%= character_part :foot, :right %>
+      <path fill="#001c3d" d="M375,765c-14.4,0-15,15-15,15v30s.6,15,15,15,15-15,15-15V780S389.4,765,375,765Z"/>
+    <%= character_part :leg, :right %>
+
+    <path fill="#ddbcaf" d="M390,599.68s0-15,15-15,15,15,15,15v30H390Z"/>
+    <rect fill="#fff" x="390" y="660" width="30" height="30"/>
+    <rect fill="#5e5e5e" x="390" y="690" width="30" height="30"/>
+    <rect fill="#fff" x="390" y="720" width="30" height="30"/>
+    <rect fill="#001c3d" x="390" y="750" width="30" height="30"/>
+    <path d="M480,660V630H420V780h30V690h30s15,0,15-15S480,660,480,660Z"/>
+    <path d="M330,630v30s-15,0-15,15,15,15,15,15h30v90h30V630H330Z"/>
+    <rect fill="#ffd5c2" x="390" y="630" width="30" height="30"/>
+
+    <%= character_part :arm, :left, [:swimming, :chilling] %>
+      <%= character_part :hand, :left, [:swimming] %>
+        <path d="M480,719.68s0-15,15-15,15,15,15,15v30H480Z"/>
+        <rect fill="#ffd5c2" x="480" y="750" width="30" height="30"/>
+      <%= character_part :hand, :left %>
+      <polygon points="480 660 480 690 480 720 510 720 510 690 510 660 480 660"/>
+    <%= character_part :arm, :left %>
+
+    <%= character_part :arm, :right, [:swimming, :chilling] %>
+      <%= character_part :hand, :left, [:swimming] %>
+        <path d="M300,719.68s0-15,15-15,15,15,15,15v30H300Z"/>
+        <rect fill="#ffd5c2" x="300" y="750" width="30" height="30"/>
+      <%= character_part :hand, :left %>
+      <polygon points="300 660 300 690 300 720 330 720 330 690 330 660 300 660"/>
+    <%= character_part :arm, :right %>
+
+    <%= character_part :head, [:chilling] %>
+      <rect x="330" y="450" width="30" height="30"/>
+      <rect x="450" y="450" width="30" height="30"/>
+      <rect fill="#ddbcaf" x="390" y="510" width="30" height="30"/>
+      <rect fill="#fff" x="390" y="540" width="30" height="30"/>
+      <polygon fill="#382516" points="270 540 270 570 270 600 300 600 300 570 300 540 300 510 270 510 270 540"/>
+      <polygon fill="#382516" points="510 510 510 540 510 570 510 600 540 600 540 570 540 540 540 510 510 510"/>
+      <rect fill="#382516" x="330" y="600" width="30" height="30"/>
+      <rect fill="#382516" x="480" y="600" width="30" height="30"/>
+      <polygon fill="#5b3d22" points="510 390 510 360 510 330 480 330 480 300 450 300 450 270 420 270 390 270 360 270 360 300 330 300 330 330 300 330 300 360 300 390 270 390 270 420 270 450 270 480 270 510 300 510 300 540 300 570 300 600 270 600 270 630 300 630 330 630 330 600 330 570 330 540 330 510 330 480 330 450 330 420 330 390 330 360 360 360 360 390 390 390 390 420 420 420 450 420 450 450 480 450 480 480 480 510 480 540 480 570 480 600 510 600 510 570 510 540 510 510 540 510 540 480 540 450 540 420 540 390 510 390"/>
+      <rect fill="#5b3d22" x="450" y="600" width="30" height="30"/>
+      <rect fill="#5b3d22" x="510" y="600" width="30" height="30"/>
+      <path fill="#ffd5c2" d="M480,570V480H450V420H390V390H360V360H330v90h30v30H330V600H480Zm-90,0V510h30v60Z"/>
+    <%= character_part :head %>
+  </svg>
+</div>

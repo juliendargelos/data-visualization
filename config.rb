@@ -73,6 +73,33 @@ helpers do
 
     content_tag :script, content.to_json.html_safe, name: name, type: 'text/json'
   end
+
+  def character_part name, direction = nil, modifiers = nil
+
+    if direction.is_a? Array
+      modifiers = direction
+      direction = nil
+    end
+
+    if modifiers.present?
+      @character_part ||= {}
+      @character_part["#{name}--#{direction}"] = modifiers.length
+
+      direction = ([direction].flatten - [nil]).map do |modifier|
+        "character__#{name}--#{direction}"
+      end.join ' '
+
+      modifiers.map do |modifier|
+        <<-HTML.html_safe
+          <g class="character__#{name} character__#{name}--#{modifier} #{direction}">
+        HTML
+      end.join.html_safe
+
+    else
+      '</g>'*@character_part["#{name}--#{direction}"]
+    end
+
+  end
 end
 
 # Build-specific configuration

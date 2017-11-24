@@ -1,0 +1,80 @@
+<div class="character">
+  <svg class="character__effigy" width="630px" height="810px" viewBox="0 0 630 810" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(210, 510)">
+      <polygon fill="#264C10" points="150 120 150 150 60 150 60 120"></polygon>
+      <path d="M0,45 C0,36.7157288 6.71390727,30 15,30 L30,30 L30,0 L180,0 L180,30 L195,30 C203.284271,30 210,36.7139073 210,45 L210,45 C210,53.284271 203.291886,60 194.994919,60 L150,60 L150,120 L60,120 L60,60 L15.0050808,60 C6.71800351,60 0,53.286093 0,45 L0,45 Z" fill="#D6D6D6"></path>
+
+      <g transform="translate(30, 120)">
+        <%= character_part :leg, :left, [:flexibility, :swimming, :displacement, :chilling] %>
+          <rect fill="#FFD8C2" x="30" y="60" width="30" height="30"></rect>
+          <path d="M45,0 C53.2842712,0 60,6.70811389 60,15.0050808 L60,60 L30,60 L30,15.0050808 C30,6.71800351 36.7139073,0 45,0 L45,0 Z" fill="#264C10"></path>
+          <g transform="translate(0, 60)">
+            <%= character_part :foot, :left, [:swimming] %>
+              <polygon fill="#000000" points="30 30 60 30 60 90 0 90 0 60 30 60"></polygon>
+              <path d="M30,15 C30,6.71572875 36.7139073,0 45,0 L45,0 C53.2842712,0 60,6.71390727 60,15 L60,30 L30,30 L30,15 Z" id="Rectangle-path" fill="#FFD8C2"></path>
+            <%= character_part :foot, :left %>
+          </g>
+        <%= character_part :leg, :left %>
+      </g>
+
+      <g transform="translate(120, 120)">
+        <%= character_part :leg, :right, [:flexibility, :swimming, :displacement, :chilling] %>
+          <rect fill="#FFD8C2" x="0" y="60" width="30" height="30"></rect>
+          <path d="M15,0 C23.2842712,0 30,6.70811389 30,15.0050808 L30,60 L0,60 L0,15.0050808 C0,6.71800351 6.71390727,0 15,0 L15,0 Z" fill="#264C10"></path>
+          <g transform="translate(0, 60)">
+            <%= character_part :foot, :right, [:swimming] %>
+              <polygon fill="#000000" points="0 30 30 30 30 60 60 60 60 90 0 90"></polygon>
+              <rect fill="#FFD8C2" x="0" y="0" width="30" height="30"></rect>
+            <%= character_part :foot, :right %>
+          </g>
+        <%= character_part :leg, :right %>
+      </g>
+
+      <g transform="translate(0, 30)">
+        <%= character_part :arm, :left, [:swimming, :chilling] %>
+          <polygon fill="#D6D6D6" points="0 0 30 0 30 60 0 60"></polygon>
+          <g transform="translate(0, 30)">
+            <%= character_part :hand, :left, [:swimming] %>
+              <rect fill="#FFD8C2" x="0" y="60" width="30" height="30"></rect>
+              <path d="M0,15.0050808 C0,6.71800351 6.71390727,0 15,0 L15,0 C23.2842712,0 30,6.70811389 30,15.0050808 L30,60 L0,60 L0,15.0050808 Z" fill="#D6D6D6"></path>
+            <%= character_part :hand, :left %>
+          </g>
+        <%= character_part :arm, :left %>
+      </g>
+
+      <g transform="translate(180, 30)">
+        <%= character_part :arm, :right, [:swimming, :chilling] %>
+          <polygon fill="#D6D6D6" points="0 0 30 0 30 60 0 60"></polygon>
+          <g transform="translate(0, 30)">
+            <%= character_part :hand, :right, [:swimming] %>
+              <rect fill="#FFD8C2" x="0" y="60" width="30" height="30"></rect>
+              <path d="M0,15.0050808 C0,6.71800351 6.71390727,0 15,0 L15,0 C23.2842712,0 30,6.70811389 30,15.0050808 L30,60 L0,60 L0,15.0050808 Z" fill="#D6D6D6"></path>
+            <%= character_part :hand, :left %>
+          </g>
+        <%= character_part :arm, :right %>
+      </g>
+
+      <g transform="translate(-30, -360)">
+        <path d="M120,315.000649 C120,306.716019 126.713907,300 135,300 L135,300 C143.284271,300 150,306.70945 150,315.000649 L150,390 L120,390 L120,315.000649 Z" fill="#EFCEBF"></path>
+      </g>
+
+      <g transform="translate(-30, -360)">
+        <%= character_part :head, [:chilling] %>
+          <polygon fill="#000000" points="120 0 210 0 210 30 210 90 60 90 60 30 120 30"></polygon>
+          <polygon fill="#FFD8C2" points="60 90 210 90 210 180 270 180 270 240 210 240 210 330 150 330 150 240 120 240 120 330 60 330 60 240 0 240 0 180 60 180"></polygon>
+          <rect fill="#D8B9A9" x="120" y="180" width="30" height="30"></rect>
+          <rect fill="#D8B9A9" x="240" y="210" width="30" height="30"></rect>
+          <rect fill="#D8B9A9" x="0" y="210" width="30" height="30"></rect>
+          <rect fill="#494949" x="150" y="0" width="30" height="30"></rect>
+          <rect fill="#EFCEBF" x="120" y="240" width="30" height="30"></rect>
+          <rect fill="#EFCEBF" x="120" y="300" width="30" height="30"></rect>
+          <path d="M30,120 L120,120 L120,210 L30,210 L30,120 Z M60,150 L60,180 L90,180 L90,150 L60,150 Z M150,120 L240,120 L240,210 L150,210 L150,120 Z M180,150 L180,180 L210,180 L210,150 L180,150 Z" fill="#000000"></path>
+          <rect fill="#000000" x="120" y="150" width="30" height="30"></rect>
+        <%= character_part :head %>
+      </g>
+    </g>
+  </svg>
+
+
+  <span class="character__name"></span>
+</div>

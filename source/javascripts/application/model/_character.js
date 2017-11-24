@@ -10,7 +10,9 @@ Application.Model.Character = class Character extends Application.Model {
           'name'
         ]
       }),
-      Application.Mixin.Renderable.Templatable
+      Application.Mixin.Renderable.Templatable.with({
+        template: character => 'character-' + character.gender.id
+      })
     ];
   }
 
@@ -26,7 +28,7 @@ Application.Model.Character = class Character extends Application.Model {
 
       swimming: 0,       // Temps de nage avant épuisement  (temps en minutes)
       nomadism: 0,       // Propension au nomadisme         (note entre 0 et 9)
-      mosquitos: false,  // Chasse au mosutique             (oui / non)
+      mosquitos: false,  // Chasse au moustique             (oui / non)
       nostrils: false,   // Faire bouger ses narines        (oui / non)
       apnea: 0,          // Retenir sa respiration          (temps en secondes)
       survival: 0,       // Survie dans la nature           (note entre 0 et 9)
@@ -88,6 +90,17 @@ Application.Model.Character = class Character extends Application.Model {
     }
 
     return this._renderers;
+  }
+
+  get slug() {
+    return this.full_name
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z\-]/g, '-')
+      .replace(/--+/, '-')
+      .replace(/^-/, '')
+      .replace(/-$/, '')
   }
 
   get full_name() {
