@@ -1,0 +1,68 @@
+.disaster
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+  opacity: 0
+  position: absolute
+  transition: opacity 1s
+
+  &--water
+    background-image: image-url('disaster/water/f1.svg')
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center -100px
+    animation: disaster-water-frames 1s infinite linear
+
+  &--enabled#{&}--water
+    &//, &::after
+      background-position: center 60vh
+      animation: disaster-water-frames .4s infinite linear, disaster-water-up 10s 1 linear forwards
+
+    // &::after
+    //   content: ''
+    //   animation-delay: .1s, 0
+    //   width: 100%
+    //   height: 100%
+    //   display: block
+    //   transform: translateY(-100%)
+
+  &--enabled#{&}--smog
+    background-image: image-url('disaster/smog/f1.svg')
+    background-repeat: no-repeat
+    background-size: cover
+    animation: disaster-smog-in 5s infinite linear alternate, disaster-smog-moving 5s infinite
+
+  &--enabled
+    opacity: 1
+
+@keyframes disaster-water-frames
+  @for $n from 1 through 4
+    #{($n - 1)/400*10000}%
+      background-image: image-url('disaster/water/f#{$n}.svg')
+  100%
+    background-image: image-url('disaster/water/f1.svg')
+
+@keyframes disaster-water-up
+  0%
+    background-position-y: 60vh
+
+  100%
+    background-position-y: -100px
+
+@keyframes disaster-smog-in
+  @for $n from 1 through 9
+    #{($n - 1)/900*10000}%
+      background-image: image-url('disaster/smog/f#{11 - $n}.svg')
+  100%
+    background-image: image-url('disaster/smog/f1.svg')
+
+@keyframes disaster-smog-moving
+  0%
+    transform: translateX(0)
+
+  50%
+    transform: translateY(20px)
+
+  100%
+    transform: translateY(0)

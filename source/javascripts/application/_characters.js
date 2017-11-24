@@ -14,7 +14,6 @@ Application.Characters = class Characters extends Application {
 
     window.addEventListener('mousewheel', event => {
       this.element.scrollTop += event.deltaY;
-      console.log(this.element.scrollTop);
     });
   }
 

@@ -8,6 +8,12 @@
   flex-direction: column
   align-items: center
 
+  &__dead
+    opacity: 0
+
+    &--enabled
+      opacity: 1
+
   &__effigy
     width: #{156px*0.7}
     height: #{203px*0.7}
@@ -98,10 +104,22 @@
     &--right
       transform-origin: pixels(0.5) pixels(0.5)
 
+  &__apnea
+    opacity: 0
+
+    &--enabled
+      animation: character-apnea 1s infinite
+
+    &--1
+      animation-delay: 0
+
+    &--2
+      animation-delay: .5s
+
   &__name
+    margin-top: 10px
     display: block
     text-align: center
-    text-transform: uppercase
     letter-spacing: .1em
     font-weight: bold
     font-size: 10px
@@ -204,3 +222,16 @@
 
   100%
     transform: rotate(0)
+
+@keyframes character-apnea
+  0%
+    opacity: 0
+
+  25%
+    opacity: 1
+
+  50%
+    opacity: 1
+
+  100%
+    opacity: 0

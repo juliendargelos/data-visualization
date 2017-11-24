@@ -13,6 +13,7 @@ end
 activate :directory_indexes
 activate :sprockets
 activate :relative_assets
+activate :livereload
 
 activate :deploy do |deploy|
   deploy.deploy_method = :git

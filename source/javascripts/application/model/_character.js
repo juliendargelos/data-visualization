@@ -7,7 +7,9 @@ Application.Model.Character = class Character extends Application.Model {
           'body',
           'arm', 'hand',
           'leg', 'foot',
-          'name'
+          'name',
+          'dead',
+          'apnea'
         ]
       }),
       Application.Mixin.Renderable.Templatable.with({
@@ -64,6 +66,13 @@ Application.Model.Character = class Character extends Application.Model {
             ['arm', 'hand', 'leg', 'foot'].forEach(part => {
               character.elements[part].with('swimming').modifiers.set({swimming: 'enabled'});
             });
+
+            setTimeout(() => {
+              ['arm', 'hand', 'leg', 'foot'].forEach(part => {
+                character.elements[part].with('swimming').modifiers.set('swimming');
+              });
+              character.dead = true;
+            }, Math.min(character.swimming*1000 + 2000 - 1, 10000));
           },
 
           clear: character => {
@@ -71,8 +80,21 @@ Application.Model.Character = class Character extends Application.Model {
               character.elements[part].with('swimming').modifiers.set('swimming');
             });
           }
-        }
-        ,
+        },
+        apnea: {
+          render: character => {
+            character.elements.apnea.modifiers.set('enabled');
+
+            setTimeout(() => {
+              character.elements.apnea.modifiers.set('enabled', false);
+              character.dead = true;
+            }, Math.min(character.apnea*100 + 2000 - 1, 10000));
+          },
+
+          clear: character => {
+            character.elements.apnea.modifiers.set('enabled', false);
+          }
+        },
         chilling: {
           render: character => {
             ['head', 'arm', 'hand', 'leg', 'foot'].forEach(part => {
@@ -139,13 +161,35 @@ Application.Model.Character = class Character extends Application.Model {
     this._zoneType = v;
   }
 
+  get dead() {
+    return !!this._dead;
+  }
+
+  set dead(v) {
+    v = !!v;
+    if(this._dead === undefined && !v) {
+      this._dead = v;
+    }
+    else {
+      this._dead = v;
+      if(this.dead) this.render();
+      this.elements.dead.modifiers.set('enabled', this.dead);
+    }
+  }
+
   render(...attributes) {
+    var parent = this.element.parentNode;
+
+    if(parent) parent.removeChild(this.element);
+
     this.elements.name.text = this.first_name;
 
     for(var renderer in this.constructor.renderers) {
       if(attributes.includes(renderer)) this.constructor.renderers[renderer].render(this);
       else this.constructor.renderers[renderer].clear(this);
     }
+
+    if(parent) parent.appendChild(this.element);
   }
 
   static get all() {
@@ -154,11 +198,13 @@ Application.Model.Character = class Character extends Application.Model {
   }
 
   static render(...attributes) {
+    this.rendering = attributes;
     this.all.render(...attributes);
   }
 
   static initialize() {
     super.initialize();
     this.create(Application.Data.characters);
+    this.rendering = [];
   }
 }

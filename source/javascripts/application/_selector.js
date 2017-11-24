@@ -26,7 +26,7 @@ Application.Selector = class Selector extends Application {
 
     this.scrolling = false;
     this.selected = this.selected.node;
-    window.t = this;
+    this.element.selector = this;
   }
 
   get top() {

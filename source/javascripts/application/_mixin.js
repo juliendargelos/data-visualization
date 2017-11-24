@@ -25,8 +25,6 @@ Application.Mixin = class Mixin extends Application {
 
       var descriptor = Object.assign(Object.getOwnPropertyDescriptor(object.prototype, property) || {}, descriptors[property]);
 
-      console.log(property, Object.getOwnPropertyDescriptor(object.prototype, property), descriptors[property])
-
       // if(descriptor.get || descriptor.set) delete descriptor.value;
 
       Object.defineProperty(object.prototype, property, descriptor);
